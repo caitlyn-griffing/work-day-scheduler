@@ -71,6 +71,8 @@ var blockInfo = [
 // current [day, date, time] displayed at the top of calendar
 $("#currentDay").text(moment().format("llll"));
 
+getStoredInfo();
+
 // The attr({}) method also allows you to set multiple attributes at the same time.
 
 blockInfo.forEach(function(blockItem) {
@@ -141,17 +143,22 @@ function getStoredInfo() {
         blockInfo = storeInfo;
     }
     savePlans();
-    //displayPlans();
+    displayPlans();
 }
-
-getStoredInfo();
-
 
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
-    var saveBlock = $(this).siblings(".description").children(".future").val();
+    var saveBlock = $(this).siblings(".description").children(".future").attr("id");
+    blockInfo[saveBlock].memo = $(this).siblings(".description").children(".future").val();
     console.log(saveBlock);
+    savePlans();
+    displayPlans();
 })
+
+
+
+
+
 
 
 
