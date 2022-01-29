@@ -17,7 +17,7 @@
 
 ## **Link** and **Preview** of Deployed Web Page
 
-- [Deployed Web Page](https://caitlyn-griffing.github.io/Beat-the-Timer//)
+- [Deployed Web Page](https://caitlyn-griffing.github.io/work-day-scheduler/)
 
 ![code quiz screenshot1](assets/images/readmeSS1.png)
 
