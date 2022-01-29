@@ -1,5 +1,120 @@
+// TODO: Create variable to hold all timeblock information in
+
+
+var blockInfo = [
+    {
+        hour: "09",
+        meridiem: "am"
+    },
+    {
+        hour: "10",
+        meridiem: "am"
+    },
+    {
+        hour: "11",
+        meridiem: "am"
+    },
+    {
+        hour: "12",
+        meridiem: "pm"
+    },
+    {
+        hour: "01",
+        meridiem: "pm"
+    },
+    {
+        hour: "02",
+        meridiem: "pm"
+    },
+    {
+        hour: "03",
+        meridiem: "pm"
+    },
+    {
+        hour: "04",
+        meridiem: "pm"
+    },
+    {
+        hour: "05",
+        meridiem: "pm"
+    },
+]
+
+
 // current [day, date, time] displayed at the top of calendar
 $("#currentDay").text(moment().format("llll"));
+
+// The attr({}) method also allows you to set multiple attributes at the same time.
+
+blockInfo.forEach(function(blockItem) {
+    // timeblock row div
+    var blockDiv = $("<div>").attr({
+        "class": "row"
+    });
+    // hour div
+    var hourDiv = $("<div>").attr({
+        "class": "col-md-1 hour"
+    });
+    // description div to hold text area  
+    // !!! make sure to delete the past class
+    var descriptionDiv = $("<div>").attr({
+        "class": "col-md-10 past description p-0"
+    });
+
+    // text area - (to write data in)
+    var textData = $("<textarea>");
+
+    // save icon/button
+    var saveIcon = $("<i class='far fa-save fa-lg'></i>");
+    var saveButton = $("<button>").attr({
+        "class": "col-md-1 saveBtn"
+    });
+    // append new elements
+    saveButton.append(saveIcon);
+    descriptionDiv.append(textData);
+    blockDiv.append(hourDiv, descriptionDiv, saveButton);
+    $(".container").append(blockDiv);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+// GIVEN I am using a daily planner to create a schedule
+
+//* COMPLETED *//
+// WHEN I open the planner
+// THEN the current day is displayed at the top of the calendar
+
+
+// WHEN I scroll down
+// THEN I am presented with timeblocks for standard business hours
+
+
+// WHEN I view the timeblocks for that day
+// THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+
+
+// WHEN I click into a timeblock
+// THEN I can enter an event
+
+
+// WHEN I click the save button for that timeblock
+// THEN the text for that event is saved in local storage
+
+
+// WHEN I refresh the page
+// THEN the saved events persist
+
+
+
 
 /* 
 container
@@ -39,68 +154,3 @@ save button : save icon
 // TODO 1.F --- COMPLETED - Append timeblockrow to .container in the HTML
 
 // TODO extra (missed) --- COMPLETED - append textarea to description
-
-// The attr({}) method also allows you to set multiple attributes at the same time.
-
-// timeblock row div
-var blockRowDiv = $("<div>").attr({
-    "class": "row"
-});
-
-// append timeblock row div to the container class in HTML
-$(".container").append(blockRowDiv);
-
-// hour div box
-var hourDiv = $("<div>").attr({
-    "class": "col-md-1 hour"
-});
-
-// description div box  ---  make sure to delete the past class
-var descriptionDiv = $("<div>").attr({
-    "class": "col-md-10 past description p-0"
-});
-
-// text area - data
-var textData = $("<textarea>");
-
-descriptionDiv.append(textData);
-
-// save icon
-var saveIcon = $("<i class='far fa-save fa-lg'></i>");
-
-// save button
-var saveButton = $("<button>").attr({
-    "class": "col-md-1 saveBtn"
-})
-
-// append save icon and button
-saveButton.append(saveIcon);
-
-blockRowDiv.append(hourDiv, descriptionDiv, saveButton);
-
-
-// GIVEN I am using a daily planner to create a schedule
-
-//* COMPLETED *//
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-
-
-// WHEN I scroll down
-// THEN I am presented with timeblocks for standard business hours
-
-
-// WHEN I view the timeblocks for that day
-// THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-
-
-// WHEN I click into a timeblock
-// THEN I can enter an event
-
-
-// WHEN I click the save button for that timeblock
-// THEN the text for that event is saved in local storage
-
-
-// WHEN I refresh the page
-// THEN the saved events persist

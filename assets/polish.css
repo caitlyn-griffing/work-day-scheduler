@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  margin-bottom: 3%;
 }
 
 /* textarea.description */
@@ -27,6 +28,7 @@ textarea {
 /* description (user input) inside textarea in the time block */
 .description {
   white-space: pre-wrap;
+  border-bottom: 3px dotted plum;
 }
 
 /* timeblock - YES */
@@ -40,6 +42,7 @@ textarea {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
+  margin-bottom: 1px;
 }
 
 /* hour of the day on planner */
