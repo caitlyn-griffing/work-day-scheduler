@@ -1,51 +1,69 @@
 // TODO: Create variable to hold all timeblock information in
 
-
+// hour:am:pm -- time for text area -- 8 hour business day (id) -- memos
 var blockInfo = [
     {
         hour: "09",
         meridiem: "am",
-        time: "09"
+        time: "09",
+        id: "0",
+        memo: ""
     },
     {
         hour: "10",
         meridiem: "am",
-        time: "10"
+        time: "10",
+        id: "1",
+        memo: ""
     },
     {
         hour: "11",
         meridiem: "am",
-        time: "11"
+        time: "11",
+        id: "2",
+        memo: ""
     },
     {
         hour: "12",
         meridiem: "pm",
-        time: "12"
+        time: "12",
+        id: "3",
+        memo: ""
     },
     {
         hour: "01",
         meridiem: "pm",
-        time: "13"
+        time: "13",
+        id: "4",
+        memo: ""
     },
     {
         hour: "02",
         meridiem: "pm",
-        time: "14"
+        time: "14",
+        id: "5",
+        memo: ""
     },
     {
         hour: "03",
         meridiem: "pm",
-        time: "15"
+        time: "15",
+        id: "6",
+        memo: ""
     },
     {
         hour: "04",
         meridiem: "pm",
-        time: "16"
+        time: "16",
+        id: "7",
+        memo: ""
     },
     {
         hour: "05",
         meridiem: "pm",
-        time: "17"
+        time: "17",
+        id: "8",
+        memo: ""
     },
 ]
 
@@ -58,7 +76,7 @@ $("#currentDay").text(moment().format("llll"));
 blockInfo.forEach(function(blockItem) {
     // timeblock row div
     var blockDiv = $("<div>").attr({
-        "class": "row"
+        "class": "row time-block"
     });
     // hour div
     var hourDiv = $("<div>")
@@ -67,14 +85,14 @@ blockInfo.forEach(function(blockItem) {
             "class": "col-md-1 hour"
     });
 
-    // description div to hold text area  
-    // !!! make sure to delete the past class
+    // description div to hold text area
     var descriptionDiv = $("<div>").attr({
-        "class": "col-md-10 past description p-0"
+        "class": "col-md-10 description p-0"
     });
 
     // text area - (to write data in)
     var textData = $("<textarea>");
+    textData.attr("id", blockItem.id);
     // textData.attr("id", blockItem.id);
     var actualTime = moment().format("HH");
     if (blockItem.time < actualTime) {
@@ -107,6 +125,26 @@ blockInfo.forEach(function(blockItem) {
 
 
 
+function savePlans() {
+    localStorage.setItem("blockInfo", JSON.stringify(blockInfo));
+}
+
+function displayPlans() {
+    blockInfo.forEach(function(_blockItem) {
+        $(`#${_blockItem.id}`).val(_blockItem.memo);
+    })
+}
+
+function getStoredInfo() {
+    var storeInfo = JSON.parse(localStorage.getItem("blockInfo"));
+    if(storeInfo){
+        blockInfo = storeInfo;
+    }
+    savePlans();
+    //displayPlans();
+}
+
+getStoredInfo();
 
 
 
@@ -143,43 +181,3 @@ blockInfo.forEach(function(blockItem) {
 // THEN the saved events persist
 
 
-
-
-/* 
-container
-    timeblock row
-        hour box
-        description (text) box
-        save button 
-------------------------------------
-timeblock div row == blockRow
-
-hour div : hour of day | AM or PM
-
-description div : textarea
-
-save button : save icon
-*/
-
-// TODO 1.0 --- Present timeblocks for standard business hours
-// business hours: 9-5
-
-// TODO Create timeblock rows  ---  COMPLETED
-
-// TODO: 1.B - Create hour box and input different hours of the day ( am & pm )
-// created hour box div  but HAVE NOT created the inner text content
-// 
-
-// TODO 1.C --- COMPLETED - Create a textarea box and place inside a div.discription box
-// created description box
-// created textarea box
-
-// TODO 1.D --- COMPLETED - Create Save button with Icon
-
-// TODO extra (missed) --- COMPLETED - append save icon and button
-
-// TODO 1.E --- COMPLETED - Append hour div, description div, and save button TO the timeblock row
-
-// TODO 1.F --- COMPLETED - Append timeblockrow to .container in the HTML
-
-// TODO extra (missed) --- COMPLETED - append textarea to description
