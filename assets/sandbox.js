@@ -52,9 +52,11 @@ blockInfo.forEach(function(blockItem) {
         "class": "row"
     });
     // hour div
-    var hourDiv = $("<div>").attr({
-        "class": "col-md-1 hour"
-    });
+    var hourDiv = $("<div>")
+        .text(`${blockItem.hour}${blockItem.meridiem}`)
+        .attr({
+            "class": "col-md-1 hour"
+        });
     // description div to hold text area  
     // !!! make sure to delete the past class
     var descriptionDiv = $("<div>").attr({
