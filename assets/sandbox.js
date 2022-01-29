@@ -147,6 +147,13 @@ function getStoredInfo() {
 getStoredInfo();
 
 
+$(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+    var saveBlock = $(this).siblings(".description").children(".future").val();
+    console.log(saveBlock);
+})
+
+
 
 
 
