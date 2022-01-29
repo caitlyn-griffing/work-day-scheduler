@@ -19,15 +19,7 @@
 
 - [Deployed Web Page](https://caitlyn-griffing.github.io/Beat-the-Timer//)
 
-![code quiz screenshot1](assets/images/readmeImages/codeQuiz1.png)
-
-![code quiz screenshot2](assets/images/readmeImages/codeQuiz2.png)
-
-![code quiz screenshot3](assets/images/readmeImages/codeQuiz3.png)
-
-![code quiz screenshot4](assets/images/readmeImages/codeQuiz4.png)
-
-![code quiz screenshot5](assets/images/readmeImages/codeQuiz5.png)
+![code quiz screenshot1](assets/images/readmeSS1.png)
 
 ---
 
