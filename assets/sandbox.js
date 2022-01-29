@@ -4,39 +4,48 @@
 var blockInfo = [
     {
         hour: "09",
-        meridiem: "am"
+        meridiem: "am",
+        time: "09"
     },
     {
         hour: "10",
-        meridiem: "am"
+        meridiem: "am",
+        time: "10"
     },
     {
         hour: "11",
-        meridiem: "am"
+        meridiem: "am",
+        time: "11"
     },
     {
         hour: "12",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "12"
     },
     {
         hour: "01",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "13"
     },
     {
         hour: "02",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "14"
     },
     {
         hour: "03",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "15"
     },
     {
         hour: "04",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "16"
     },
     {
         hour: "05",
-        meridiem: "pm"
+        meridiem: "pm",
+        time: "17"
     },
 ]
 
@@ -56,7 +65,8 @@ blockInfo.forEach(function(blockItem) {
         .text(`${blockItem.hour}${blockItem.meridiem}`)
         .attr({
             "class": "col-md-1 hour"
-        });
+    });
+
     // description div to hold text area  
     // !!! make sure to delete the past class
     var descriptionDiv = $("<div>").attr({
@@ -65,6 +75,23 @@ blockInfo.forEach(function(blockItem) {
 
     // text area - (to write data in)
     var textData = $("<textarea>");
+    // textData.attr("id", blockItem.id);
+    var actualTime = moment().format("HH");
+    if (blockItem.time < actualTime) {
+        textData.attr({
+            "class": "past"
+        })
+    }
+    if (blockItem.time === actualTime) {
+        textData.attr({
+            "class": "present"
+        })
+    }
+    if (blockItem.time > actualTime) {
+        textData.attr({
+            "class": "future"
+        })
+    }
 
     // save icon/button
     var saveIcon = $("<i class='far fa-save fa-lg'></i>");
